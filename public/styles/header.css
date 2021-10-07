@@ -1,0 +1,10 @@
+header {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d89821;
+  background-image: url('/images/vintage-speckles.png');
+}
