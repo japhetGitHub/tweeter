@@ -3,7 +3,7 @@ nav {
   top: 0;
   height: 120px;
   width: 100%;
-  background-color: #4056A1;
+  background-color: transparent;
   color: #FFFFFF;
   padding: 0 1.5em;
   display: flex;
@@ -11,6 +11,11 @@ nav {
   align-items: center;
   z-index: 1;
 }
+
+nav.solidify {
+  background-color: #4056A1;
+}
+
 nav span {
   font-family: 'Bungee';
 }
