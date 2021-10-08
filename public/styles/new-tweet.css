@@ -30,6 +30,10 @@ textarea {
   border: rgba(0, 0, 0, 0);
   outline: none;
 }
+
+.new-tweet > form .counter-red{
+  color: red;
+}
 .new-tweet button[type="submit"] {
   color: white;
   background-color: #4056A1;
