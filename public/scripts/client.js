@@ -4,32 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// Fake data taken from initial-tweets.json
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
 const createTweetElement = function (tweetData) {
   return `
     <article class="tweet">
@@ -58,15 +32,33 @@ const createTweetElement = function (tweetData) {
 const renderTweets = function (tweets) {
   return tweets.forEach(tweetData => {
     const $tweet = createTweetElement(tweetData);
-    $('#tweets-container').append($tweet);
+    $('#tweets-container').prepend($tweet);
   });
 };
 
 $(document).ready(function () {
-  $('.new-tweet > form').submit(function(event) {
-    // console.log($(this).serialize());
-    $.post('/tweets', $(this).serialize());
+  $(function loadTweets() {
+    $.get('/tweets', function(data) {
+      renderTweets(data);
+    }, 'json');
+  });
+
+  $('.new-tweet > form').submit(function (event) {
+    const formText = $(this).serializeArray()[0].value;
+    if (formText && formText.length <= 140) { // valid input
+      const $this = $(this); // caching 'this' to reference within $.post
+      $.post('/tweets', $(this).serialize(), function() {
+        // clears the form
+        // $this.trigger('reset');
+        
+        // prefered solution for clearing the form (per code review)
+        $('#tweet-text').val('');
+        $('.counter').text('140'); 
+      });
+    } else {
+      formText ? alert('Tweet is too long (>140).') : alert('Tweet Content not present.');
+    }
     event.preventDefault();
   });
-  renderTweets(data);
+
 });
