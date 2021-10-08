@@ -1,0 +1,58 @@
+article {
+  border: 5px solid #555149;
+  margin: 1.25em 0;
+  padding: 0.75em;
+  display: flex;
+  flex-direction: column;
+}
+
+article.tweet header {
+  background-color: inherit;
+  background-image: none;
+  height: inherit; /* undoing header height set in header.css */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #d3d7e5;
+  margin-bottom: 1em;
+}
+
+article.tweet > header > span {
+  display: flex;
+  align-items: center;
+  color: #545149;
+}
+
+article.tweet > header img {
+  height: 2em;
+  width: 2em;
+  margin-right: 0.5em;
+}
+
+article.tweet > p {
+  margin: 0;
+  padding: 0.5em; 
+}
+
+article.tweet > footer {
+  border-top: 5px solid #555149;
+  font-size: 0.8em;
+  padding: 0.5em;
+  margin-top: 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+article.tweet:hover {
+  box-shadow: 6px 6px 1px 0px #C9CAE2;
+}
+
+article.tweet > footer i {
+  color: #4055a1;
+  padding: 0 0.1em;
+}
+
+article.tweet > footer i:hover {
+  color: #c99926;
+}
