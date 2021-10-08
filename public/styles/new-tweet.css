@@ -9,12 +9,6 @@ form {
   align-content: center;
 }
 
-/* form > div {
-  display: flex;
-  align-items: center;
-  padding-bottom: 15px;
-} */
-
 form > div {
   display: flex;
   justify-content: space-between;
@@ -34,12 +28,12 @@ textarea {
 .new-tweet > form .counter-red{
   color: red;
 }
-.new-tweet button[type="submit"] {
-  color: white;
-  background-color: #4056A1;
-}
 
 .counter {
   color: #555149;
 }
 
+.new-tweet button[type="submit"] {
+  color: white;
+  background-color: #4056A1;
+}
