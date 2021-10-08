@@ -36,29 +36,40 @@ const renderTweets = function (tweets) {
   });
 };
 
+const loadTweets = function() {
+  $.get('/tweets', function(data) {
+    renderTweets(data);
+  }, 'json');
+};
+
 $(document).ready(function () {
-  $(function loadTweets() {
-    $.get('/tweets', function(data) {
-      renderTweets(data);
-    }, 'json');
+
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > ($('header').height() - $('nav').height())) {
+      $('nav').addClass('solidify');
+    } else {
+      $('nav').removeClass('solidify');
+    }
   });
 
   $('.new-tweet > form').submit(function (event) {
+    event.preventDefault();
+    
     const formText = $(this).serializeArray()[0].value;
     if (formText && formText.length <= 140) { // valid input
-      const $this = $(this); // caching 'this' to reference within $.post
+      const $this = $(this); // caching the form context to use in post success f'n
       $.post('/tweets', $(this).serialize(), function() {
-        // clears the form
-        // $this.trigger('reset');
-        
-        // prefered solution for clearing the form (per code review)
+        // clearing the form
         $('#tweet-text').val('');
-        $('.counter').text('140'); 
+        $this.find('output').text('140');
+
+        loadTweets(); //reload tweets (including newest addition)
       });
     } else {
       formText ? alert('Tweet is too long (>140).') : alert('Tweet Content not present.');
     }
-    event.preventDefault();
+
   });
 
+  loadTweets();
 });
