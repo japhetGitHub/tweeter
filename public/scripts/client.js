@@ -4,6 +4,12 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function (tweetData) {
   return `
     <article class="tweet">
@@ -15,7 +21,7 @@ const createTweetElement = function (tweetData) {
         ${tweetData.user.handle}
       </header>
       <p>
-        ${tweetData.content.text}
+        ${escape(tweetData.content.text)}
       </p>
       <footer>
         ${timeago.format(tweetData.created_at)}
@@ -56,15 +62,19 @@ $(document).ready(function () {
     event.preventDefault();
     
     const formText = $(this).serializeArray()[0].value;
+
     if (formText && formText.length <= 140) { // valid input
       const $this = $(this); // caching the form context to use in post success f'n
+
       $.post('/tweets', $(this).serialize(), function() {
         // clearing the form
         $('#tweet-text').val('');
         $this.find('output').text('140');
 
-        loadTweets(); //reload tweets (including newest addition)
+        //reload tweets (including newest addition)
+        loadTweets();
       });
+
     } else {
       formText ? alert('Tweet is too long (>140).') : alert('Tweet Content not present.');
     }
