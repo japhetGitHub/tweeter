@@ -60,7 +60,14 @@ $(document).ready(function () {
 
   $('.new-tweet > form').submit(function (event) {
     event.preventDefault();
-    
+
+    const errElem = $(this).siblings('label');
+    if (!errElem.hasClass('hidden')) {
+      errElem.slideUp('slow', function() {
+        errElem.addClass('hidden');
+      });
+    }
+
     const formText = $(this).serializeArray()[0].value;
 
     if (formText && formText.length <= 140) { // valid input
@@ -74,11 +81,17 @@ $(document).ready(function () {
         //reload tweets (including newest addition)
         loadTweets();
       });
-
     } else {
-      formText ? alert('Tweet is too long (>140).') : alert('Tweet Content not present.');
+        errElem.slideToggle({
+          duration: 'slow',
+          start: function() {
+            formText ? errElem.find('p').text('Tweet is too long (>140 characters)') : errElem.find('p').text('Empty Tweet');
+          },
+          complete: function() {
+            errElem.removeClass('hidden');
+          }
+        });
     }
-
   });
 
   loadTweets();
