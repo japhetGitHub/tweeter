@@ -17,6 +17,7 @@ article.tweet header {
   color: #d3d7e5;
   margin-bottom: 1em;
   margin-top: 0;
+  padding-top: 0;
 }
 
 article.tweet > header > span {
