@@ -14,7 +14,7 @@ form > div {
   justify-content: space-between;
   border-top: #555149;
   font-family: 'Bungee';
-  padding-top: 15px;
+  padding-top: 0.5em;
   border-top: 5px solid;
 }
 
@@ -36,4 +36,17 @@ textarea {
 .new-tweet button[type="submit"] {
   color: white;
   background-color: #4056A1;
+}
+
+.new-tweet > label.hidden {
+  display: none;
+}
+.new-tweet > label {
+  margin-top: 0.5em;
+  text-align: center;
+  color: red;
+}
+.new-tweet > label > p {
+  display: inline;
+  margin: 0;
 }

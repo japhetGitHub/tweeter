@@ -60,13 +60,18 @@
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
       <form action="/tweets" method="POST">
-          <label for="tweet-text">What are you humming about?</label> 
-          <textarea name="text" id="tweet-text"></textarea>
+        <label for="tweet-text">What are you humming about?</label> 
+        <textarea name="text" id="tweet-text"></textarea>
         <div>
           <button type="submit">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
       </form>
+      <label class="hidden" for="tweet-text">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p></p>
+        <i class="fas fa-exclamation-triangle"></i>
+      </label>
     </section>
     <section id="tweets-container"></section>
   </main>
