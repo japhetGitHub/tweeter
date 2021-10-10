@@ -50,21 +50,44 @@ const loadTweets = function() {
 
 $(document).ready(function () {
 
+  $('#btn-goto-top').click(function(event) {
+    event.preventDefault();
+    $('html, body').animate({ scrollTop: '0'});
 
-  $('#btn-nav-new-tweet').click(function() {
+    $('.new-tweet').slideDown('slow', function() {
+      $('#tweet-text').focus();
+    });
+    if ($('.new-tweet').is(':visible')) {
+      $('.new-tweet').css('display', 'flex');
+    }
+
+    $('#btn-nav-new-tweet i').addClass('up');
+  });
+  
+  $('#btn-nav-new-tweet').click(function(event) {
+    event.preventDefault();
+
     $('.new-tweet').slideToggle('slow', function() {
       $('#tweet-text').focus();
     });
     if ($('.new-tweet').is(':visible')) {
       $('.new-tweet').css('display', 'flex');
     }
+
+    $('#btn-nav-new-tweet i').toggleClass('up');
+    // $('#btn-nav-new-tweet i').css({'transform' : 'rotate(180deg)'});
+    // $(this).animate({ deg: '180'});
   });
 
   $(window).scroll(function() {
     if ($(window).scrollTop() > ($('header').height() - $('nav').height())) {
       $('nav').addClass('solidify');
+      $('#btn-goto-top').show();
+      $('#btn-nav-new-tweet').hide();
     } else {
       $('nav').removeClass('solidify');
+      $('#btn-goto-top').hide();
+      $('#btn-nav-new-tweet').show();
     }
   });
 

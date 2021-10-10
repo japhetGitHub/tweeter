@@ -35,6 +35,22 @@ main {
   margin: 0 auto;
 }
 
+#btn-goto-top {
+  display: none;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 1em;
+  z-index: 1;
+  float: right;
+  position: fixed;
+  bottom: 0.5em;
+  right: 0.5em;
+}
+
+#btn-goto-top i {
+  transform: rotate(180deg);
+}
 @media screen and (min-width: 1024px) {
   .container {
     flex-direction: row;

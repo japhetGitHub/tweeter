@@ -30,7 +30,14 @@ nav span {
 }
 
 .nav-right a:hover i {
-  transform: translateY(0.2em);
+  transform: translateY(0.3em);
+}
+.nav-right a:hover i.up {
+  transform: rotate(180deg) translateY(0.1em);
+}
+
+.nav-right a i.up {
+  transform: rotate(180deg) translateY(-0.3em);
 }
 
 .nav-right i {
