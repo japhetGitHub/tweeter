@@ -40,10 +40,12 @@
   <nav>
     <span>tweeter</span>
     <div class="nav-right">
-      <div>
-        <strong>Write</strong> a new tweet
-      </div>
-      <i class="fas fa-angle-double-down"></i>
+      <a id="btn-nav-new-tweet" href="#">
+        <div>
+          <strong>Write</strong> a new tweet
+        </div>
+        <i class="fas fa-angle-double-down"></i>
+      </a>
     </div>
   </nav>
   <div class="container">
@@ -59,10 +61,8 @@
     <!-- Page-specific (main) content here -->
     <main>
       <section class="new-tweet">
-        <h2>Compose Tweet</h2>
         <form action="/tweets" method="POST">
-          <label for="tweet-text">What are you humming about?</label> 
-          <textarea name="text" id="tweet-text"></textarea>
+          <textarea placeholder="What are you humming about?" name="text" id="tweet-text"></textarea>
           <div>
             <button type="submit">Tweet</button>
             <output name="counter" class="counter" for="tweet-text">140</output>

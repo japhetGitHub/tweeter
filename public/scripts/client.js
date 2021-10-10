@@ -50,6 +50,16 @@ const loadTweets = function() {
 
 $(document).ready(function () {
 
+
+  $('#btn-nav-new-tweet').click(function() {
+    $('.new-tweet').slideToggle('slow', function() {
+      $('#tweet-text').focus();
+    });
+    if ($('.new-tweet').is(':visible')) {
+      $('.new-tweet').css('display', 'flex');
+    }
+  });
+
   $(window).scroll(function() {
     if ($(window).scrollTop() > ($('header').height() - $('nav').height())) {
       $('nav').addClass('solidify');

@@ -58,3 +58,9 @@ article.tweet > footer i {
 article.tweet > footer i:hover {
   color: #c99926;
 }
+
+@media screen and (min-width: 1024px) {
+  article.tweet:first-child {
+    margin-top: 0;
+  }
+}

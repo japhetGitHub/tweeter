@@ -20,13 +20,17 @@ nav span {
   font-family: 'Bungee';
 }
 
-.nav-right{
+.nav-right a {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 0.9em;
   text-decoration: none;
   color: inherit;
+}
+
+.nav-right a:hover i {
+  transform: translateY(0.2em);
 }
 
 .nav-right i {

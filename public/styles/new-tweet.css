@@ -1,5 +1,5 @@
 .new-tweet {
-  display: flex;
+  display: none;
   flex-direction: column;
   margin-top: 2em;
 }
@@ -28,6 +28,11 @@ textarea {
   background-color: rgba(0, 0, 0, 0);
   border: rgba(0, 0, 0, 0);
   outline: none;
+}
+
+textarea::placeholder {
+  color: #545149;
+  font-weight: bold;
 }
 
 .new-tweet > form .counter-red{
@@ -59,5 +64,6 @@ textarea {
 @media screen and (min-width: 1024px) {
   .new-tweet {
     margin-top: 0;
+    margin-bottom: 1.25em;
   }
 }
