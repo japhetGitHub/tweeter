@@ -25,7 +25,32 @@ body {
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 
- main {
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+main {
   width: 90%;
-  margin: auto;
- }
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    max-width: 1800px;
+    margin: 10em auto 0;
+    /* border: 2px dashed green; */
+    justify-content: space-between;
+  }
+
+  main {
+    /* border: 2px dashed blue; */
+    width: 60%;
+    max-width: 38em;
+    margin: 0 2em 0 2.5em;
+    /* max-width: 960px; */
+    /* margin-right: 2em;
+    margin-left: 2.5em; */
+  }
+}

@@ -1,6 +1,11 @@
 .new-tweet {
   display: flex;
   flex-direction: column;
+  margin-top: 2em;
+}
+
+.new-tweet h2 {
+  margin-top: 0;
 }
 
 form {
@@ -49,4 +54,10 @@ textarea {
 .new-tweet > label > p {
   display: inline;
   margin: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .new-tweet {
+    margin-top: 0;
+  }
 }
