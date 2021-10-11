@@ -1,7 +1,6 @@
 /*
- * Client-side JS logic goes here
+ * Client-side JS logic
  * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
 const escape = function(str) { // to prevent XSS attacks the input is santized here 
@@ -35,16 +34,25 @@ const createTweetElement = function(tweetData) { // tweetData comes from a serve
   `;
 };
 
-const renderTweets = function(tweets) {
+const renderAllTweets = function(tweets) {
   return tweets.forEach(tweetData => {
     const $tweet = createTweetElement(tweetData);
     $('#tweets-container').prepend($tweet); // prepend() makes the tweets display in reverse-chronological order
   });
 };
 
-const loadTweets = function() {
-  $.get('/tweets', function(data) {
-    renderTweets(data);
+const renderLatestTweet = function(allTweets) {
+  return $('#tweets-container').prepend(createTweetElement(allTweets.pop())); // gets the latest (last) tweet only
+}
+
+const loadTweets = function(loadAll = true) { // by default load all tweets
+  $.get('/tweets', function(tweetData) {
+    console.log(tweetData);
+    if (loadAll) {
+      renderAllTweets(tweetData);
+    } else {
+      renderLatestTweet(tweetData);
+    }
   }, 'json');
 };
 
@@ -112,8 +120,8 @@ $(document).ready(function() {
         $('#tweet-text').val('');
         $this.find('output').text('140');
 
-        //reload tweets (including newest addition)
-        loadTweets();
+        //reload latest tweet
+        loadTweets(0);
       });
     } else {
       errElem.slideToggle({ // will always slide down but slideToggle offers slideToggle([..options]) fn with more control
@@ -128,5 +136,5 @@ $(document).ready(function() {
     }
   });
 
-  loadTweets(); // ensures (at minimum) tweets from server are loaded up upon first page visit 
+  loadTweets(); // ensures all tweets from server are loaded up upon page load
 });
