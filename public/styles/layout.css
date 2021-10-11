@@ -49,24 +49,20 @@ main {
 }
 
 #btn-goto-top i {
-  transform: rotate(180deg);
+  transform: rotate(180deg); /* re-using font-awesome icon, just rotated */
 }
+
 @media screen and (min-width: 1024px) {
   .container {
     flex-direction: row;
-    max-width: 1800px;
+    max-width: 1800px; /* part of the layout-shifter design pattern, applies a fixed-width layout for desktop screens */
     margin: 10em auto 0;
-    /* border: 2px dashed green; */
-    justify-content: space-between;
+    justify-content: space-between; /* allows header and tweets to have a growing space between as screen size increases */
   }
 
   main {
-    /* border: 2px dashed blue; */
     width: 60%;
-    max-width: 38em;
+    max-width: 38em; /* prevents tweets from filling it's column space */ 
     margin: 0 2em 0 2.5em;
-    /* max-width: 960px; */
-    /* margin-right: 2em;
-    margin-left: 2.5em; */
   }
 }

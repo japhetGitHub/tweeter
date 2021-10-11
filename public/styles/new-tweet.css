@@ -24,8 +24,7 @@ form > div {
 }
 
 textarea {
-  flex-grow: 3;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0); /* makes new tweet form input have transparent background instead of default white */
   border: rgba(0, 0, 0, 0);
   outline: none;
 }
@@ -35,7 +34,7 @@ textarea::placeholder {
   font-weight: bold;
 }
 
-.new-tweet > form .counter-red{
+.new-tweet > form .counter-red{ /* toggled by jQuery when textarea input exceeds 140 characters */
   color: red;
 }
 
@@ -51,11 +50,13 @@ textarea::placeholder {
 .new-tweet > label.hidden {
   display: none;
 }
+
 .new-tweet > label {
   margin-top: 0.5em;
   text-align: center;
   color: red;
 }
+
 .new-tweet > label > p {
   display: inline;
   margin: 0;

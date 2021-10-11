@@ -12,11 +12,11 @@ nav {
   z-index: 1;
 }
 
-nav.solidify {
+nav.solidify { /* toggled by jQuery scroll event handler */
   background-color: #4056A1;
 }
 
-nav span {
+nav span { /* imported from google fonts */
   font-family: 'Bungee';
 }
 
@@ -29,38 +29,41 @@ nav span {
   color: inherit;
 }
 
+/* animates the new tweet form nav button to bounce upon hover */
 .nav-right a:hover i {
   transform: translateY(0.3em);
 }
 .nav-right a:hover i.up {
   transform: rotate(180deg) translateY(0.1em);
 }
-
 .nav-right a i.up {
   transform: rotate(180deg) translateY(-0.3em);
 }
 
+/* color for font-awesome nav icon */
 .nav-right i {
   color: red;
 }
 
 @media screen and (min-width: 1024px) {
-  nav {
+  nav { /* removes transparent nav color for desktop users */
     background-color: #4056A1;
     margin: 0;
   }
 }
 
 @media screen and (max-width: 480px) {
+  /* removes new tweet form nav button text for small screens */
   nav {
     font-size: 1.2em;
   }
   .nav-right {
     flex-direction: row;
+  }
+  .nav-right a {
     padding-top: 0;
   }
   .nav-right div {
-    /* padding-right: 0.2em; */
     display: none;
   }
 }
