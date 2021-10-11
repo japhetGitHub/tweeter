@@ -52,6 +52,10 @@ main {
   transform: rotate(180deg); /* re-using font-awesome icon, just rotated */
 }
 
+#btn-goto-top i:hover {
+  color: #4056A1;
+}
+
 @media screen and (min-width: 1024px) {
   .container {
     flex-direction: row;
