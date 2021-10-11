@@ -34,25 +34,17 @@ const createTweetElement = function(tweetData) { // tweetData comes from a serve
   `;
 };
 
-const renderAllTweets = function(tweets) {
+const renderTweets = function(tweets) {
+  $('#tweets-container').empty(); // clears the tweets <section> before reloading the tweets
   return tweets.forEach(tweetData => {
     const $tweet = createTweetElement(tweetData);
     $('#tweets-container').prepend($tweet); // prepend() makes the tweets display in reverse-chronological order
   });
 };
 
-const renderLatestTweet = function(allTweets) {
-  return $('#tweets-container').prepend(createTweetElement(allTweets.pop())); // gets the latest (last) tweet only
-}
-
-const loadTweets = function(loadAll = true) { // by default load all tweets
+const loadTweets = function() { // loads all tweets retreived from server
   $.get('/tweets', function(tweetData) {
-    console.log(tweetData);
-    if (loadAll) {
-      renderAllTweets(tweetData);
-    } else {
-      renderLatestTweet(tweetData);
-    }
+    renderTweets(tweetData);
   }, 'json');
 };
 
@@ -120,8 +112,8 @@ $(document).ready(function() {
         $('#tweet-text').val('');
         $this.find('output').text('140');
 
-        //reload latest tweet
-        loadTweets(0);
+        //reloads tweets including latest tweet
+        loadTweets(); // reloading all tweets upon each submit ensures that the timestamps displayed for each tweet are updated
       });
     } else {
       errElem.slideToggle({ // will always slide down but slideToggle offers slideToggle([..options]) fn with more control
