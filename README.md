@@ -13,3 +13,8 @@ Tweeter is a simple, single-page Twitter clone that uses jQuery, HTML5, and CSS 
 - Express
 - Node 5.10.x or above
 
+## Screenshots
+
+!["Screenshot of desktop layout"](https://github.com/japhetGitHub/tweeter/blob/master/docs/tweeter_desktop_layout.png?raw=true)
+!["Screenshot of tablet/mobile layout with user tweet error message"](https://github.com/japhetGitHub/tweeter/blob/master/docs/tweeter_responsive_layout_with_tweet_errormsg.png?raw=true)
+!["Screenshot of tablet/mobile layout mid-scroll (tweet form hidden)"](https://github.com/japhetGitHub/tweeter/blob/master/docs/tweeter_mid-scroll.png?raw=true)
